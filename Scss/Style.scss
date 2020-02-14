@@ -27,7 +27,7 @@ a{
   text-decoration: none;
   color: #000;
   font-family:TTTravels-Medium;
-  transition: all 0.4s ease;
+  @include transition(all,0.4s);
 }
 
 a:hover{
@@ -43,7 +43,7 @@ a:hover{
     width: 40px;
     margin-bottom: 5px;
     opacity: 0.6;
-    transition: all 0.4s ease;
+    @include transition(all,0.4s);
 }
 
 @mixin flex($alineItems,$justifyContent,$flexDirection){
@@ -71,6 +71,13 @@ a:hover{
     -moz-animation: load 3s ease ;
       -o-animation: load 3s ease ;
          animation: load 3s ease ;
+}
+
+@mixin transition($number,$time){
+  -webkit-transition: $number $time ease;
+     -moz-transition: $number $time ease;
+       -o-transition: $number $time ease;
+          transition: $number $time ease;
 }
 
 
@@ -151,7 +158,7 @@ main{
   left: 26%;
   top: 30%;
   -webkit-transform: rotate(1.1deg) translateZ(0px) translate(-50%,-50%);
-  transition: all 0.2s ease;
+  @include transition(all,0.2s);
 }
 
 .CentralImg{
@@ -160,7 +167,7 @@ main{
   top: 50%; left: 50%;
   z-index: -1;
   -webkit-transform: rotate(1.5deg) translateZ(-800px) translate(-50%,-50%);
-  transition: all 0.2s ease;
+  @include transition(all,0.2s);
 }
 
 .rightImg{
@@ -170,7 +177,7 @@ main{
   top: 65%;
   z-index: 1;
   -webkit-transform: rotate(2.03deg) translateZ(10px) translate(-50%,-50%);
-  transition: all 0.2s ease;
+  @include transition(all,0.2s);
 }
 
 .skill_block{
