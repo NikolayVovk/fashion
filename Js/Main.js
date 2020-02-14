@@ -21,6 +21,18 @@ for (var i = 0; i < da.length; i++) {
 
 
 
+function showVisible() {
+  for (let img of document.querySelectorAll('img')) {
+    let realSrc = img.dataset.src;
+    if (!realSrc) continue;
+      img.src = realSrc;
+      img.dataset.src = '';
+};}
+
+showVisible();
+
+
+
 // СлайдерSwiper
 
 
@@ -44,7 +56,14 @@ var swiper = new Swiper('.swiper-container', {
   breakpoints: {
     300: {
       slidesPerView: 1,
-      spaceBetween: 40
+      spaceBetween: 40,
+      coverflowEffect: {
+        rotate: 13,
+        stretch: 0,
+        depth: 100,
+        modifier: 5,
+        slideShadows : false,
+      },
     },
     1600: {
       slidesPerView: 3,
@@ -54,8 +73,11 @@ var swiper = new Swiper('.swiper-container', {
 }
 );
 
-let sliderImg = document.getElementsByName("sliderImg")
+
+
 //Контроль слайдера
+
+let sliderImg = document.getElementsByName("sliderImg")
 const swiperSlides = document.getElementsByClassName('swiper-slide');
 
 swiper.on('slideChange', function() {

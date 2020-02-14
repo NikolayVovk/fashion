@@ -5,6 +5,7 @@ body{
   margin: 0;
   padding: 0;
   cursor: url(../Img/Cursor.png ), default;
+  overflow: hidden;
 }
 
 @font-face {
@@ -64,6 +65,21 @@ a:hover{
   -webkit-text-stroke: 2px rgba(123,4,0,100%);
 }
 
+
+@mixin Animation{
+  -webkit-animation: load 3s ease ;
+    -moz-animation: load 3s ease ;
+      -o-animation: load 3s ease ;
+         animation: load 3s ease ;
+}
+
+
+@-webkit-keyframes load { 0%{filter: blur(10px); opacity: 0; transform: translateY(100px);}40%{filter: blur(70px); opacity: 0.1; transform: translateY(100px);}70%{filter: blur(8px); opacity: 0.2; transform: translateY(20px);}100%{filter: blur(0px); opacity: 1;transform: translateY(0px);}};
+@-moz-keyframes load { 0%{filter: blur(10px); opacity: 0; transform: translateY(100px);}40%{filter: blur(70px); opacity: 0.1; transform: translateY(100px);}70%{filter: blur(8px); opacity: 0.2; transform: translateY(20px);}100%{filter: blur(10px); opacity: 1;transform: translateY(0px);}};
+@-o-keyframes load { 0%{filter: blur(10px); opacity: 0; transform: translateY(100px);}40%{filter: blur(70px); opacity: 0.1; transform: translateY(100px);}70%{filter: blur(8px); opacity: 0.2; transform: translateY(20px);}100%{filter: blur(0px); opacity: 1;transform: translateY(0px);}};
+@keyframes load { 0%{filter: blur(10px); opacity: 0; transform: translateY(100px);}40%{filter: blur(70px); opacity: 0.1; transform: translateY(100px);}70%{filter: blur(8px); opacity: 0.2; transform: translateY(20px);}100%{filter: blur(0px); opacity: 1;transform: translateY(0px);}};
+
+
 header{
   width: 100%;
   height: 140px;
@@ -71,6 +87,7 @@ header{
   top: 0;
   z-index: 1;
   @include flex(flex-start,space-between,row);
+  @include Animation;
 }
 
 footer{
@@ -79,6 +96,7 @@ footer{
   position: absolute;
   bottom: 0;
   z-index: 1;
+  @include Animation;
   @include flex(center,space-between,row);
   &:hover div{width: 80px; background-color: rgba(123,4,0,100%);}
   div{
@@ -91,7 +109,6 @@ footer{
   margin: 20px 40px 20px 40px;
   p {font-family:TTTravels-Black;font-weight: bold; font-size: 20px;}
 }
-
 
 .mobile{
   display: none;
@@ -118,8 +135,6 @@ footer{
   width: 50%;
 }
 
-
-
 main{
   height: 100vh;
   width: 100%;
@@ -127,6 +142,7 @@ main{
   perspective: 1000px;
   @include flex(center,center,row);
   overflow: hidden;
+  @include Animation;
 }
 
 .leftImg{
@@ -135,6 +151,7 @@ main{
   left: 26%;
   top: 30%;
   -webkit-transform: rotate(1.1deg) translateZ(0px) translate(-50%,-50%);
+  transition: all 0.2s ease;
 }
 
 .CentralImg{
@@ -143,6 +160,7 @@ main{
   top: 50%; left: 50%;
   z-index: -1;
   -webkit-transform: rotate(1.5deg) translateZ(-800px) translate(-50%,-50%);
+  transition: all 0.2s ease;
 }
 
 .rightImg{
@@ -152,6 +170,7 @@ main{
   top: 65%;
   z-index: 1;
   -webkit-transform: rotate(2.03deg) translateZ(10px) translate(-50%,-50%);
+  transition: all 0.2s ease;
 }
 
 .skill_block{
@@ -189,17 +208,28 @@ main{
   }
 }
 
+.svg{
+  width: 610px;
+  height:728px;
+  position: absolute;
+  top:-5%;
+  left: 60%;
+  transform: translate(-50%,0%);
+  z-index: -1;
+}
+
 .mouse{
   font-family:TTTravels-Black;
   font-weight: 400;
   font-size: 22px;
   z-index: 1000;
   opacity: 0;
-  transition: all 0.1s ease;
+  transition: opacity 0.6s ease,top 0.1s ease, 0.1s ease left ;
   position: absolute;
   top: calc(var(--mouseDragY));
   left:calc(var(--mouseDragX));
 }
+
 
 
 //element.getElementsByTagName('figure')[0].style.transform = 'rotate(0deg)';
